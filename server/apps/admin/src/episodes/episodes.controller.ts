@@ -25,10 +25,11 @@ export class EpisodesController {
     }))
     return {
       title: "课时管理",
+      translate: false,
       column: [
         { prop: "course", label: "所属课程", type: 'select', dicData: courses,  row: true },
         { prop: "name", label: "课时名称", span: 24 },
-        { prop: "file", label: "视频文件", span: 24, type: 'upload', listType: 'picture-img', action: '/upload' },
+        { prop: "file", label: "视频文件", span: 24, width: '120px', listType: 'picture-img', type: 'upload', action: '/upload' },
       ]
     }
   }

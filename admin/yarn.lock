@@ -786,10 +786,10 @@
   resolved "https://registry.npm.taobao.org/@nodelib/fs.stat/download/@nodelib/fs.stat-1.1.3.tgz?cache=0&sync_timestamp=1570173338691&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40nodelib%2Ffs.stat%2Fdownload%2F%40nodelib%2Ffs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha1-K1o6s/kYzKSKjHVMCBaOPwPrphs=
 
-"@smallwei/avue@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.npm.taobao.org/@smallwei/avue/download/@smallwei/avue-2.2.0.tgz#397da1dcb64cff9a75a6a072c1a8c1ba06872371"
-  integrity sha1-OX2h3LZM/5p1pqBywajBugaHI3E=
+"@smallwei/avue@^2.3.0":
+  version "2.3.0"
+  resolved "https://registry.npmjs.org/@smallwei/avue/-/avue-2.3.0.tgz#e43e54abba804032b9c410faa953116b8c5a9e0e"
+  integrity sha512-cVoxExoKb29zKABxkDTmBVx05ldC0ig7jAsSTIMrLSYpIj6/muUNROGVQIv4kVJyEvmmNR14JepOVcZ3INVbPA==
   dependencies:
     ant-design-vue "^1.3.14"
     async-validator "^1.10.0"
