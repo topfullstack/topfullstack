@@ -4,8 +4,9 @@ import { TypegooseModule } from 'nestjs-typegoose';
 import { User } from './models/user.model';
 import { Course } from './models/course.model';
 import { Episode } from './models/episode.model';
+import { Comment } from './models/comment.model';
 
-const models = TypegooseModule.forFeature([User, Course, Episode]);
+const models = TypegooseModule.forFeature([User, Course, Episode, Comment]);
 
 @Global()
 @Module({

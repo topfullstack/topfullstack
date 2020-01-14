@@ -10,6 +10,11 @@ export type UserDocument = DocumentType<User>;
   },
 })
 export class User {
+  @prop({
+    default: 'https://via.placeholder.com/150',
+  })
+  avatar: string;
+
   @ApiProperty({ description: '用户名', example: 'user1' })
   @prop()
   username: string;

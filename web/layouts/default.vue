@@ -98,6 +98,7 @@
           autocomplete="new-password"
         ></v-text-field>
         {{ user }}
+
         <v-btn color="success" type="submit">登录</v-btn>
       </v-form>
     </v-bottom-sheet>
@@ -116,7 +117,7 @@ export default {
     ...mapState(['user'])
   },
   data: () => ({
-    isShowLoginForm: true,
+    isShowLoginForm: false,
     loginModel: {},
     drawer: null,
     items: [
