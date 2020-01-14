@@ -29,12 +29,22 @@
             <v-list-item-title v-text="item.text" />
           </v-list-item>
         </v-list>
-        <v-list-item class="mt-4" link>
+
+        <v-list-item class="mt-4" @click="isShowLoginForm = true">
           <v-list-item-action>
-            <v-icon color="grey darken-1">mdi-plus-circle-outline</v-icon>
+            <v-icon color="grey darken-1">mdi-lock</v-icon>
+          </v-list-item-action>
+          <v-list-item-title
+            class="grey--text text--darken-1"
+            >{{
+          }}</v-list-item-title>
+        </v-list-item>
+        <v-list-item class="mt-4" @click="isShowLoginForm = true">
+          <v-list-item-action>
+            <v-icon color="grey darken-1">mdi-lock</v-icon>
           </v-list-item-action>
           <v-list-item-title class="grey--text text--darken-1"
-            >Browse Channels</v-list-item-title
+            >登录</v-list-item-title
           >
         </v-list-item>
         <v-list-item link>
@@ -65,20 +75,49 @@
           hide-details
         />
       </v-row>
+      <v-avatar>
+        <span class="white--text ">UA</span>
+      </v-avatar>
     </v-app-bar>
 
     <v-content>
       <nuxt-child />
     </v-content>
+
+    <v-bottom-sheet inset v-model="isShowLoginForm">
+      <v-form class="pa-4" @submit.prevent="login">
+        <v-text-field
+          v-model="loginModel.username"
+          label="用户名"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="loginModel.password"
+          label="密码"
+          type="password"
+          autocomplete="new-password"
+        ></v-text-field>
+        {{ user }}
+        <v-btn color="success" type="submit">登录</v-btn>
+      </v-form>
+    </v-bottom-sheet>
   </v-app>
 </template>
 
 <script>
+import { createNamespacedHelpers } from 'vuex'
+const { mapState } = createNamespacedHelpers('auth')
+
 export default {
   props: {
     source: { type: String, default: '' }
   },
+  computed: {
+    ...mapState(['user'])
+  },
   data: () => ({
+    isShowLoginForm: true,
+    loginModel: {},
     drawer: null,
     items: [
       { icon: 'home', text: '首页', link: '/' },
@@ -93,6 +132,14 @@ export default {
       { picture: 78, text: 'MKBHD' }
     ]
   }),
+  methods: {
+    async login() {
+      await this.$auth.loginWith('local', {
+        data: this.loginModel
+      })
+      this.isShowLoginForm = false
+    }
+  },
   created() {
     this.$vuetify.theme.dark = true
   }
