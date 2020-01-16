@@ -34,9 +34,8 @@
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-lock</v-icon>
           </v-list-item-action>
-          <v-list-item-title
-            class="grey--text text--darken-1"
-            >{{
+          <v-list-item-title class="grey--text text--darken-1">{{
+            $store.state.auth.user.username
           }}</v-list-item-title>
         </v-list-item>
         <v-list-item class="mt-4" @click="isShowLoginForm = true">
@@ -75,9 +74,6 @@
           hide-details
         />
       </v-row>
-      <v-avatar>
-        <span class="white--text ">UA</span>
-      </v-avatar>
     </v-app-bar>
 
     <v-content>
@@ -97,7 +93,7 @@
           type="password"
           autocomplete="new-password"
         ></v-text-field>
-        {{ user }}
+
         <v-btn color="success" type="submit">登录</v-btn>
       </v-form>
     </v-bottom-sheet>
@@ -105,15 +101,9 @@
 </template>
 
 <script>
-import { createNamespacedHelpers } from 'vuex'
-const { mapState } = createNamespacedHelpers('auth')
-
 export default {
   props: {
     source: { type: String, default: '' }
-  },
-  computed: {
-    ...mapState(['user'])
   },
   data: () => ({
     isShowLoginForm: true,
