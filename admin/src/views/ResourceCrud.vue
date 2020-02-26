@@ -75,14 +75,14 @@ export default class ResourceList extends Vue {
     this.data = res.data;
   }
 
-  async create(row, done, loading) {
+  async create(row, done) {
     await this.$http.post(`${this.resource}`, row);
     this.$message.success("创建成功");
     this.fetch();
     done();
   }
 
-  async update(row, index, done, loading) {
+  async update(row, index, done) {
     const data = JSON.parse(JSON.stringify(row));
     delete data.$index;
     await this.$http.put(`${this.resource}/${row._id}`, data);

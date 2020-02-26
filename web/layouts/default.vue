@@ -30,15 +30,19 @@
           </v-list-item>
         </v-list>
 
-        <v-list-item class="mt-4" @click="isShowLoginForm = true">
+        <v-list-item
+          v-if="$store.state.auth.user"
+          class="mt-4"
+          @click="isShowLoginForm = true"
+        >
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-lock</v-icon>
           </v-list-item-action>
-          <v-list-item-title class="grey--text text--darken-1">{{
-            $store.state.auth.user.username
-          }}</v-list-item-title>
+          <v-list-item-title class="grey--text text--darken-1">
+            欢迎您：{{ $store.state.auth.user.username }}</v-list-item-title
+          >
         </v-list-item>
-        <v-list-item class="mt-4" @click="isShowLoginForm = true">
+        <v-list-item v-else class="mt-4" @click="isShowLoginForm = true">
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-lock</v-icon>
           </v-list-item-action>
@@ -106,7 +110,7 @@ export default {
     source: { type: String, default: '' }
   },
   data: () => ({
-    isShowLoginForm: true,
+    isShowLoginForm: false,
     loginModel: {},
     drawer: null,
     items: [
