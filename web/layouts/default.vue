@@ -30,11 +30,7 @@
           </v-list-item>
         </v-list>
 
-        <v-list-item
-          v-if="$store.state.auth.user"
-          class="mt-4"
-          @click="isShowLoginForm = true"
-        >
+        <v-list-item v-if="$store.state.auth.user" class="mt-4">
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-lock</v-icon>
           </v-list-item-action>
