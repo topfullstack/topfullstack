@@ -5,9 +5,10 @@ import { User } from './models/user.model';
 import { Course } from './models/course.model';
 import { Episode } from './models/episode.model';
 import { Action } from './models/action.model';
+import { Comment } from './models/comment.model';
 
 const models = TypegooseModule.forFeature([
-  User, Course, Episode, Action
+  User, Course, Episode, Action, Comment
 ]);
 
 @Global()

@@ -13,7 +13,12 @@ export class CommentsController {
 
   @Get()
   async index() {
-    return await this.commentModel.find().where({});
+    return await this.commentModel
+      .find()
+      .populate('user')
+      .where({})
+      .sort('-_id')
+      .limit(20);
   }
 
   @Post()

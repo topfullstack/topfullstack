@@ -16,7 +16,7 @@
           </v-card-subtitle>
 
           <v-card-actions>
-            <like-btn type="Course" :object="item._id"></like-btn>
+            <like-btn :object="item._id" type="Course"></like-btn>
 
             <v-btn color="purple" text>
               Explore

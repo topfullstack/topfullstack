@@ -38,7 +38,7 @@
             欢迎您：{{ $store.state.auth.user.username }}</v-list-item-title
           >
         </v-list-item>
-        <v-list-item v-else class="mt-4" @click="isShowLoginForm = true">
+        <v-list-item v-else @click="isShowLoginForm = true" class="mt-4">
           <v-list-item-action>
             <v-icon color="grey darken-1">mdi-lock</v-icon>
           </v-list-item-action>
@@ -84,8 +84,8 @@
       <nuxt-child />
     </v-content>
 
-    <v-bottom-sheet inset v-model="isShowLoginForm">
-      <v-form class="pa-4" @submit.prevent="login">
+    <v-bottom-sheet v-model="isShowLoginForm" inset>
+      <v-form @submit.prevent="login" class="pa-4">
         <v-text-field
           v-model="loginModel.username"
           label="用户名"
@@ -126,6 +126,9 @@ export default {
       { picture: 78, text: 'MKBHD' }
     ]
   }),
+  created() {
+    this.$vuetify.theme.dark = false
+  },
   methods: {
     async login() {
       await this.$auth.loginWith('local', {
@@ -133,9 +136,6 @@ export default {
       })
       this.isShowLoginForm = false
     }
-  },
-  created() {
-    this.$vuetify.theme.dark = false
   }
 }
 </script>
