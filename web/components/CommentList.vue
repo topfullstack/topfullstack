@@ -57,11 +57,23 @@ export default {
       await this.fetch()
     },
     async fetch() {
-      this.comments = await this.$axios.$get('comments', {})
+      this.comments = await this.$axios.$get('comments', {
+        params: {
+          query: {
+            where: {
+              type: this.type,
+              object: this.object
+            }
+          }
+        }
+      })
     }
   },
-  created() {
-    this.fetch()
+  watch: {
+    object: {
+      handler: 'fetch',
+      immediate: true
+    }
   }
 }
 </script>

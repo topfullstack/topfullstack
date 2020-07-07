@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, UseGuards, Query } from '@nestjs/common';
 import { InjectModel } from 'nestjs-typegoose';
 import { ReturnModelType } from '@typegoose/typegoose';
 import { Comment } from '@libs/db/models/comment.model';
@@ -12,13 +12,13 @@ export class CommentsController {
   ) {}
 
   @Get()
-  async index() {
+  async index(@Query('query') query: string) {
+    const params = JSON.parse(query);
     return await this.commentModel
       .find()
       .populate('user')
-      .where({})
-      .sort('-_id')
-      .limit(20);
+      .where(params.where)
+      .setOptions(params);
   }
 
   @Post()
